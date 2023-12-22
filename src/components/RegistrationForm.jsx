@@ -81,15 +81,15 @@ const RegistrationForm = () => {
   
   return (
     <Container>
-        <Flex className='items-center justify-between border border-spacing-2 rounded mt-2'>
+        <Flex className='items-center justify-between border border-spacing-2 rounded mt-2 mx-2 sm:mx-2 md:mx-2'>
             <div className='ml-2'>
-              <h2 className=' text-4xl font-bold'>New Patient Enrollment</h2>
-              <p className=' text-xl'>Dr. Xander M. Spencer</p>
+              <h2 className='text-xl font-bold md:text-4xl'>New Patient Enrollment</h2>
+              <p className='text-base md:text-xl'>Dr. Xander M. Spencer</p>
             </div>
-            <Img src={doctor} imgClassName='h-[150px]'/>
+            <Img src={doctor} imgClassName='w-full'/>
         </Flex>
-        <Flex className='justify-between gap-3 mt-2'>
-            <div className='basis-1/2'>
+        <Flex className='flex-col mx-2 sm:mx-2 md:mx-2 lg:flex-row lg:justify-between lg:gap-2'>
+            <div className='lg:basis-1/2'>
               <form className='flex flex-col'>
                   <Input type='text' onChange={(e)=>{setName(e.target.value)}} name='name' placeholder='Name' value={name}/>
                   <Input type='date' onChange={(e)=>{setDate(e.target.value)}} name='date' placeholder='Date' value={date}/>
@@ -106,34 +106,33 @@ const RegistrationForm = () => {
                   <button onClick={handleSubmit} className='text-left px-5 py-3 bg-blue-600 mt-2 w-24 rounded text-white'>Submit</button>
               </form>
             </div>
-            <div className='basis-1/2 border border-spacing-2 rounded mt-2'>
-            <table className="table-fixed">
-              <thead>
-                <tr>
-                  <th className='border border-slate-300'>Name</th>
-                  <th className='border border-slate-300'>Date of Birth</th>
-                  <th className='border border-slate-300'>Gender</th>
-                  <th className='border border-slate-300'>Phone</th>
-                  <th className='border border-slate-300'>Email</th>
-                  <th className='border border-slate-300'>Address</th>
-                  <th className='border border-slate-300'>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {patients.map((patient) => (
-                  <tr key={patient.id}>
-                    <td className='border border-slate-300'>{patient.name}</td>
-                    <td className='border border-slate-300'>{patient.date}</td>
-                    <td className='border border-slate-300'>{patient.gender}</td>
-                    <td className='border border-slate-300'>{patient.phone}</td>
-                    <td className='border border-slate-300'>{patient.email}</td>
-                    <td className='border border-slate-300'>{patient.address}</td>
-                    <td className='border border-slate-300'><button onClick={() => handleDelete(patient.id)} className='bg-red-500 text-white rounded p-1'>Delete</button></td>
-                  </tr>
-                ))}
-              </tbody>
-          </table>
-
+            <div className='lg:basis-1/2 border border-spacing-2 rounded mt-2'>
+                  <table className="table-auto">
+                    <thead>
+                      <tr>
+                        <th className='border px-4 py-2'>Name</th>
+                        <th className='border px-4 py-2'>Date of Birth</th>
+                        <th className='border px-4 py-2'>Gender</th>
+                        <th className='border px-4 py-2'>Phone</th>
+                        <th className='border px-4 py-2'>Email</th>
+                        <th className='border px-4 py-2'>Address</th>
+                        <th className='border px-4 py-2'>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {patients.map((patient) => (
+                        <tr key={patient.id}>
+                          <td className='border px-4 py-2'>{patient.name}</td>
+                          <td className='border px-4 py-2'>{patient.date}</td>
+                          <td className='border px-4 py-2'>{patient.gender}</td>
+                          <td className='border px-4 py-2'>{patient.phone}</td>
+                          <td className='border px-4 py-2'>{patient.email}</td>
+                          <td className='border px-4 py-2'>{patient.address}</td>
+                          <td className='border px-4 py-2'><button onClick={() => handleDelete(patient.id)} className='bg-red-500 text-white rounded p-1'>Delete</button></td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
             </div>
         </Flex>
     </Container>
